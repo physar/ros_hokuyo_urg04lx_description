@@ -52,3 +52,4 @@ This ros-node is using the following ros-packages:
 ```bash
 sudo apt install ros-melodic-urg-node
 ```
+This node enables to communicate with all Hokuyo sensors that are complaint with the SCIP 2.2 protocol (or earlier).
