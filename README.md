@@ -45,3 +45,10 @@ sudo apt install ros-melodic-robot-state-publisher
 sudo apt install ros-melodic-joint-state-publisher-gui
 ```
 
+
+This ros-node is using the following ros-packages:
+
+
+```bash
+sudo apt install ros-melodic-urg-node
+```
