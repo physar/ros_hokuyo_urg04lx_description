@@ -21,7 +21,7 @@ The URG04LX laser scanner was the first wide-spread lidar sensor and available i
 
 * [Ubuntu 18:04 ( Bionic Beaver )](http://releases.ubuntu.com/bionic/)
 
-* [ROS1 Melodic Morenia](http://wiki.ros.org/melodic/Installation/Ubuntu)bash
+* [ROS1 Melodic Morenia](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
 If the ros-melodic is not already in your package list, add it
 
