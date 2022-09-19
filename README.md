@@ -42,5 +42,6 @@ sudo apt install ros-melodic-ros-base
 sudo apt install ros-melodic-rviz
 sudo apt install ros-melodic-xacro
 sudo apt install ros-melodic-robot-state-publisher
+sudo apt install ros-melodic-joint-state-publisher-gui
 ```
 
