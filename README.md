@@ -33,3 +33,14 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 
 sudo apt update
 ```
+
+This ros-node is using the following ros-packages:
+
+
+```bash
+sudo apt install ros-melodic-ros-base
+sudo apt install ros-melodic-rviz
+sudo apt install ros-melodic-xacro
+sudo apt install ros-melodic-robot-state-publisher
+```
+
