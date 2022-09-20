@@ -56,7 +56,7 @@ This node enables to communicate with all Hokuyo sensors that are complaint with
 
 ## Hardware connection
 
-The Hokuyo URG04LX has two connectors: RS232 and USB. To connect the RS232 to a modern PC you need a RS232-USB converter:
+The Hokuyo URG04LX has two connectors: RS232 and USB. To connect the RS232 to a modern PC you need a USB-Serial converter:
 
 <img src=https://sourceforge.net/p/urgnetwork/wiki/image/attachment/urg_connectSerial.jpg>
 
