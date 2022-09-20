@@ -60,7 +60,7 @@ The Hokuyo URG04LX has two connectors: RS232 and USB. To connect the RS232 to a 
 
 <img src=https://sourceforge.net/p/urgnetwork/wiki/image/attachment/urg_connectSerial.jpg>
 
-You could also directly use a USB-micro connector, but notice that the power should still be provided over the RS232 connection. When the URG04LX has a USB-connection, no data is send over the RS232 interface:
+You could also directly use a USB-micro connector, but notice that the power should still be provided over the RS232 connection. When the URG04LX is connected via the USB-micro connector, no data is send over the RS232 interface:
 
 <img src=https://sourceforge.net/p/urgnetwork/wiki/image/attachment/urg_connectUsb.jpg>
 
