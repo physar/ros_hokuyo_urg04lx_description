@@ -11,7 +11,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://urdf_tutorial/meshes/hokuyo.dae"/>
+          <mesh filename="package://ros_hokuyo_urg04lx_description/meshes/hokuyo.dae"/>
         </geometry>
       </visual>
       <inertial>
