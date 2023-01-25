@@ -162,5 +162,46 @@ sudo apt install ros-melodic-robot-state-publisher
 sudo apt install ros-melodic-joint-state-publisher-gui
 ```
 
+This approach fails because some of the other required packages are not available for ros-melodic. The following method works (and is tested).
 
-This ros-node is using the following ros-packages:
+### Prerequisites when for newer / older versions of Ubuntu / ROS
+
+* [Ubuntu 18:04 ( Bionic Beaver )](http://releases.ubuntu.com/bionic/)
+* [Ubuntu 22:04 ( Jammy Jellyfish ) ](http://releases.ubuntu.com/jammy/)
+
+* [ROS1 Noetic Ninjemys](https://github.com/RoboStack/ros-noetic)
+
+You should know that ros-noetic is only supported for Ubuntu 20:04. To run nos-netic you need [RoboStack](https://github.com/RoboStack/ros-noetic), which solves all dependencies on a specific version of Ubuntu.
+
+The installation of ros-noetic for RoboStack is as follows: 
+```bash
+conda install mamba -c conda-forge
+mamba create -n robostackenv ros-noetic-desktop python=3.9 -c robostack-staging -c conda-forge --no-channel-priority --override-channels
+conda activate robostackenv
+mamba install compilers cmake pkg-config make ninja
+mamba install catkin_tools
+mamba install mesa-libgl-devel-cos7-x86_64 mesa-dri-drivers-cos7-x86_64 libselinux-cos7-x86_64 libxdamage-cos7-x86_64 libxxf86vm-cos7-x86_64 libxext-cos7-x86_64 xorg-libxfixes
+```
+
+Specific for Ubuntu 18:04 is an update to the latest version of libglib with this commands:
+```bash
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
+sudo apt upgrade libstdc++6
+```
+
+Unfortunatelly, the Hokuyo related packages cannot be installed via mamba, so they have to be build from source:
+```bash
+cd ~/mambaforge
+mkdir -p catkin_ws/src
+cd catkin_ws
+catkin init
+cd src
+git clone https://github.com/ros-drivers/urg_node.git
+git clone https://github.com/ros-perception/laser_proc.git
+git clone https://github.com/ros-drivers/urg_c.git
+git clone git clone https://github.com/physar/ros_hokuyo_urg04lx_description.git
+cd ..
+catkin build    
+source devel/setup.bash
+```
+Note that this RoboStack approach still has to be tested for Ubuntu 22:04 ( Jammy Jellyfish ). In theory this should also work.
