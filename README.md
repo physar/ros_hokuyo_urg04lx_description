@@ -100,11 +100,18 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
-Now you could start a node which publishes the laser scans with 
+When you connected via /dev/ttyUSB0 you could start a node which publishes the laser scans with:
 
 ```bash
 source ~/catkin_ws/devel/setup.bash
 roslaunch ros_hokuyo_urg04lx_description urg_lidar_serial.launch
+```
+
+Alternatively, when you connected via /dev/ttyACM0 you could start a node which publishes the laser scans with:
+
+```bash
+source ~/catkin_ws/devel/setup.bash
+roslaunch ros_hokuyo_urg04lx_description urg_lidar_usb.launch
 ```
 
 In another terminal you start the description with
@@ -161,8 +168,15 @@ sudo apt install ros-melodic-xacro
 sudo apt install ros-melodic-robot-state-publisher
 sudo apt install ros-melodic-joint-state-publisher-gui
 ```
+This ros-node is using the following ros-packages:
 
-This approach fails because some of the other required packages are not available for ros-melodic. The following method works (and is tested).
+
+```bash
+sudo apt install ros-melodic-urg-node
+```
+
+
+This approach was tested on a Ubuntu 18.04 and works fine. On the same machine the following alternative method was tested.
 
 ### Prerequisites when for newer / older versions of Ubuntu / ROS
 
