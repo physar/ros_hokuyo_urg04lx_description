@@ -130,12 +130,15 @@ rosrun tf2_ros static_transform_publisher 0 0 0 0 0 0 map laser
 In a fourth terminal you could start the visualisation with 
 
 ```bash
+source ~/catkin_ws/devel/setup.bash
 rosrun rviz rviz -d rviz/urg_scan_and_model.rviz
 ```
 
 The result should be the visualisation of both the LaserScan and the RobotModel 
 
 <img src=https://staff.fnwi.uva.nl/a.visser/research/atwork/2022/Urg04lxModelRosNoetic.png alt="Hokuyo URG04LX description in ROS Noetic's RVIZ" style="display:block; margin-right: 10px; ext-align=center;" width="800">
+
+If not, add at the left a LaserScan and a RobotModel. Specify for the LaserScan topic '\scan' and for the RobotModel the topic '\laser\robot_description'.
 
 ### Acknowledgement
 
@@ -187,11 +190,21 @@ This approach was tested on a Ubuntu 18.04 and works fine. On the same machine t
 
 You should know that ros-noetic is only supported for Ubuntu 20:04. To run nos-netic you need [RoboStack](https://github.com/RoboStack/ros-noetic), which solves all dependencies on a specific version of Ubuntu.
 
-The installation of ros-noetic for RoboStack is as follows: 
+The installation of ros-noetic for RoboStack is as follows:
+
+When needed, install conda following the instructions from [https://github.com/conda-forge/miniforge](miniforge)
+```bash
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
+```
+
+Next install mamba and inside mamba a robostack environment:
 ```bash
 conda install mamba -c conda-forge
 mamba create -n robostackenv ros-noetic-desktop python=3.9 -c robostack-staging -c conda-forge --no-channel-priority --override-channels
-conda activate robostackenv
+mamba init
+source ~/.bashrc
+mamba activate robostackenv
 mamba install compilers cmake pkg-config make ninja
 mamba install catkin_tools
 mamba install mesa-libgl-devel-cos7-x86_64 mesa-dri-drivers-cos7-x86_64 libselinux-cos7-x86_64 libxdamage-cos7-x86_64 libxxf86vm-cos7-x86_64 libxext-cos7-x86_64 xorg-libxfixes
@@ -218,4 +231,48 @@ cd ..
 catkin build    
 source devel/setup.bash
 ```
-Note that this RoboStack approach still has to be tested for Ubuntu 22:04 ( Jammy Jellyfish ). In theory this should also work.
+Now you could run the four ros-node in this environment in the following way:
+
+
+When you connected via /dev/ttyUSB0 you could start a node which publishes the laser scans with:
+
+```bash
+mamba activate robostackenv
+source ~/mambaforge/catkin_ws/devel/setup.bash
+roslaunch ros_hokuyo_urg04lx_description urg_lidar_serial.launch
+```
+
+Alternatively, when you connected via /dev/ttyACM0 you could start a node which publishes the laser scans with:
+
+```bash
+mamba activate robostackenv
+source ~/mambaforge/catkin_ws/devel/setup.bash
+roslaunch ros_hokuyo_urg04lx_description urg_lidar_usb.launch
+```
+n another terminal you start the description with
+
+```bash
+mamba activate robostackenv
+source ~/mambaforge/catkin_ws/devel/setup.bash
+roslaunch ros_hokuyo_urg04lx_description urg-04lx.launch
+```
+
+In a third terminal you could start a transformation from the map to the location of the sensor:
+
+```bash
+mamba activate robostackenv
+rosrun tf2_ros static_transform_publisher 0 0 0 0 0 0 map laser
+```
+
+In a fourth terminal you could start the visualisation with
+
+```bash
+mamba activate robostackenv
+source ~/mambaforge/catkin_ws/devel/setup.bash
+rosrun rviz rviz -d rviz/urg_scan_and_model.rviz
+```
+
+The result should be the visualisation of both the LaserScan and the RobotModel, as described before.
+
+Note that this RoboStack approach has to been tested both for Ubuntu 18:04 and for Ubuntu 22:04.
+
