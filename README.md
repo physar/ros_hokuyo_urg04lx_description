@@ -274,5 +274,5 @@ rosrun rviz rviz -d rviz/urg_scan_and_model.rviz
 
 The result should be the visualisation of both the LaserScan and the RobotModel, as described before.
 
-Note that this RoboStack approach has to been tested both for Ubuntu 18:04 and for Ubuntu 22:04.
+Note that this RoboStack approach has been tested both for Ubuntu 18:04 and for Ubuntu 22:04.
 
