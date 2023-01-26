@@ -188,7 +188,7 @@ This approach was tested on a Ubuntu 18.04 and works fine. On the same machine t
 
 * [ROS1 Noetic Ninjemys](https://github.com/RoboStack/ros-noetic)
 
-You should know that ros-noetic is only supported for Ubuntu 20:04. To run nos-netic you need [RoboStack](https://github.com/RoboStack/ros-noetic), which solves all dependencies on a specific version of Ubuntu.
+You should know that ros-noetic is only supported for Ubuntu 20:04. To run nos-noetic you need [RoboStack](https://github.com/RoboStack/ros-noetic), which solves all dependencies on a specific version of Ubuntu.
 
 The installation of ros-noetic for RoboStack is as follows:
 
