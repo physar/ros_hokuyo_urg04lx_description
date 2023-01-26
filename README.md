@@ -100,6 +100,8 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
+## Run the package
+
 When you connected via /dev/ttyUSB0 you could start a node which publishes the laser scans with:
 
 ```bash
