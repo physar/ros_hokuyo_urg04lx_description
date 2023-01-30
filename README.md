@@ -218,22 +218,23 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt upgrade libstdc++6
 ```
 
-Unfortunatelly, the Hokuyo related packages cannot be installed via mamba, so they have to be build from source:
+Fortunatelly, the Hokuyo related packages are now also part of the ros-noetic-desktop package from robostack, so they have to be build from source.
+Only this ros_hokuyo_urg04lx_description still has to be build from source:
 ```bash
 cd ~/mambaforge
 mkdir -p catkin_ws/src
 cd catkin_ws
 catkin init
 cd src
-git clone https://github.com/ros-drivers/urg_node.git
-git clone https://github.com/ros-perception/laser_proc.git
-git clone https://github.com/ros-drivers/urg_c.git
+# git clone https://github.com/ros-drivers/urg_node.git
+# git clone https://github.com/ros-perception/laser_proc.git
+$ git clone https://github.com/ros-drivers/urg_c.git
 git clone git clone https://github.com/physar/ros_hokuyo_urg04lx_description.git
 cd ..
 catkin build    
 source devel/setup.bash
 ```
-Now you could run the four ros-node in this environment in the following way:
+Now you could run the following four ros-nodes in this environment in the following way:
 
 
 When you connected via /dev/ttyUSB0 you could start a node which publishes the laser scans with:
